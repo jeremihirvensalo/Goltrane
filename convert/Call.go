@@ -6,6 +6,7 @@ var convFuncs = map[string]func(string) string{
 	"rgb2hex":  RGB2Hex,
 	"rgb2rgba": RGB2RGBA,
 	"rgba2hex": RGBA2Hex,
+	"hsl2rgb":  HSL2RGB,
 }
 
 func Call(method string, data string) string {
