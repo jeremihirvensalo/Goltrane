@@ -1,27 +1,18 @@
 package main
 
 import (
-	"flag"
-	"karhuhelsinki/goltrane/convert"
-	"karhuhelsinki/goltrane/internal"
-	"os"
+	"karhuhelsinki/goltrane/command"
+
+	"github.com/alecthomas/kong"
 )
 
+type CLI struct {
+	Hex2RGB command.Hex2RGBCmd `cmd help:"Convert hex to rgb"`
+}
+
 func main() {
-
-	method := os.Args[1:][0]
-
-	infile := flag.String("infile", "index.css", "Specify infile")
-	outfile := flag.String("outfile", "outfile.css", "Specify outfile")
-	// alpha := flag.String("alpha", "1", "Specify alpha channel")
-
-	flag.Parse()
-
-	data, err := os.ReadFile(*infile)
-	internal.CheckErr(err)
-
-	translated := convert.Call(method, string(data))
-
-	err = os.WriteFile(*outfile, []byte(translated), 0644)
-	internal.CheckErr(err)
+	cli := CLI{}
+	ctx := kong.Parse(&cli)
+	err := ctx.Run()
+	ctx.FatalIfErrorf(err)
 }
