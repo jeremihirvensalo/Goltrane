@@ -7,7 +7,7 @@ import (
 )
 
 type CLI struct {
-	Hex2RGB command.Hex2RGBCmd `cmd help:"Convert hex to rgb"`
+	Hex2RGB command.Hex2RGBCmd `cmd aliases:"hex2rgb" help:"Convert hex to rgb"`
 }
 
 func main() {
