@@ -1,7 +1,6 @@
 package command
 
 import (
-	"bufio"
 	"os"
 )
 
@@ -17,11 +16,14 @@ func (g *Globals) Read() (string, error) {
 	var data []byte
 	var err error
 
-	data, err = bufio.NewReader(g.Infile).ReadBytes('\n')
+	defer g.Infile.Close()
+
+	data, err = os.ReadFile(g.Infile.Name())
 
 	if err != nil {
 		return "", err
 	}
+
 	return string(data), nil
 }
 
