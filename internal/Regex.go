@@ -3,7 +3,7 @@ package internal
 import "regexp"
 
 var RegexStrigns = map[string]string{
-	"hex":         `(#[0-9a-f|A-F]{6}|#[0-9a-f|A-F]{3})`,
+	"hex":         `(#[0-9a-f|A-F]{6}|#[0-9a-f|A-F]{3});`,
 	"hexa":        `(#[0-9a-f|A-F]{8})`,
 	"rgb":         `rgb\( *(\d{1,3} *, *\d{1,3} *, *\d{1,3}) *\)`,
 	"rgba":        `rgba\( *(\d{1,3} *, *\d{1,3} *, *\d{1,3} *, *[0-1]?\.\d{1,2}?) *\)`,

@@ -13,10 +13,12 @@ func Hex2RGB(data string) string {
 	for i := 0; i < len(matches); i++ {
 		hex := matches[i][1:]
 
+		hex = hex[:len(hex)-1]
+
 		values, err := strconv.ParseUint(string(hex), 16, 32)
 		internal.CheckErr(err)
 
-		newVal := fmt.Sprintf("rgb(%d, %d, %d)", uint8(values>>16), uint8((values>>8)&0xFF), uint8(values&0xFF))
+		newVal := fmt.Sprintf("rgb(%d, %d, %d);", uint8(values>>16), uint8((values>>8)&0xFF), uint8(values&0xFF))
 
 		reg := regexp.MustCompile(matches[i] + `{1}`)
 
