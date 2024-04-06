@@ -21,7 +21,7 @@ func HSL2RGB(data string) string {
 		lig := float64(internal.ToInt(numbers[2])) / 100.0 // Lightness
 
 		c := (1 - math.Abs(2*lig-1)) * sat
-		x := c * math.Abs(math.Mod(hue, 2.0)-1)
+		x := c * (1 - math.Abs(math.Mod(hue, 2.0)-1))
 		m := lig - (c / 2.0)
 
 		r := int(math.Round(m * 255))       // Red
