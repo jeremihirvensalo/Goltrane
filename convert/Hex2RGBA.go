@@ -30,10 +30,12 @@ func Hex2RGBA(data string) string {
 	for i := 0; i < len(hexHits); i++ {
 		hexVal := hexHits[i][1:]
 
+		hexVal = hexVal[:len(hexVal)-1]
+
 		values, err := strconv.ParseUint(string(hexVal), 16, 32)
 		internal.CheckErr(err)
 
-		newVal := fmt.Sprintf("rgba(%d, %d, %d, 1)", uint8(values>>16), uint8((values>>8)&0xFF), uint8(values&0xFF))
+		newVal := fmt.Sprintf("rgba(%d, %d, %d, 1);", uint8(values>>16), uint8((values>>8)&0xFF), uint8(values&0xFF))
 
 		data = strings.Replace(data, hexHits[i], newVal, -1)
 	}
