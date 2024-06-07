@@ -5,8 +5,7 @@ import (
 	"strings"
 )
 
-func RGBA2Hex(data string) string {
-
+func RGBA2RGB(data string) string {
 	hits := internal.Regex("rgba", data)
 	cleanVals := internal.GetCleanValues("rgba", hits)
 
@@ -14,10 +13,6 @@ func RGBA2Hex(data string) string {
 		numbers := strings.Split(cleanVals[i], ",")
 
 		numbers[3] = internal.TransformAlpha(numbers[3])
-
-		hex := internal.CreateHex(numbers)
-
-		data = strings.Replace(data, hits[i], hex, -1)
 	}
 
 	return data

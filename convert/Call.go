@@ -7,6 +7,7 @@ var convFuncs = map[string]func(string) string{
 	"rgb2rgba": RGB2RGBA,
 	"rgb2hsl":  RGB2HSL,
 	"rgba2hex": RGBA2Hex,
+	"rgba2rgb": RGBA2RGB,
 	"hsl2rgb":  HSL2RGB,
 }
 
