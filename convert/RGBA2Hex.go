@@ -1,18 +1,9 @@
 package convert
 
 import (
-	"fmt"
 	"karhuhelsinki/goltrane/internal"
-	"strconv"
 	"strings"
 )
-
-func transformAlpha(alpha string) string {
-	alphaVal, err := strconv.ParseFloat(alpha, 64)
-	internal.CheckErr(err)
-
-	return fmt.Sprintf("%d", int(alphaVal*255))
-}
 
 func RGBA2Hex(data string) string {
 
@@ -22,7 +13,7 @@ func RGBA2Hex(data string) string {
 	for i := 0; i < len(cleanVals); i++ {
 		numbers := strings.Split(cleanVals[i], ",")
 
-		numbers[3] = transformAlpha(numbers[3])
+		numbers[3] = internal.TransformAlpha(numbers[3])
 
 		hex := internal.CreateHex(numbers)
 
